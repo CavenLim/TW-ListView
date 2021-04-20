@@ -1,7 +1,6 @@
 package com.myapplicationdev.android.tw_listview;
 
 import android.content.Context;
-import android.media.Image;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,17 +10,16 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-public class ModuleAdapter extends ArrayAdapter<Module> {
-    private ArrayList<Module> modules;
+public class YearAdapter extends ArrayAdapter<String> {
+    private ArrayList<String> year;
     private Context context;
-    private TextView moduleCode;
-    private ImageView moduleImage;
+    private TextView tvYear;
 
 
-    public ModuleAdapter(Context context, int resource, ArrayList<Module> objects){
+    public YearAdapter(Context context, int resource, ArrayList<String> objects){
         super(context, resource, objects);
         // Store the food that is passed to this adapter
-        modules = objects;
+        year = objects;
         // Store Context object as we would need to use it later
         this.context = context;
     }
@@ -35,34 +33,23 @@ public class ModuleAdapter extends ArrayAdapter<Module> {
         LayoutInflater inflater = (LayoutInflater) context
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         // "Inflate" the row.xml as the layout for the View object
-        View rowView = inflater.inflate(R.layout.moduleyearcell, parent, false);
+        View rowView = inflater.inflate(R.layout.yearcell, parent, false);
 
         // Get the TextView object
-        moduleCode = (TextView) rowView.findViewById(R.id.moduleCode);
+        tvYear = (TextView) rowView.findViewById(R.id.textViewYear2);
         // Get the ImageView object
-        moduleImage = (ImageView) rowView.findViewById(R.id.imageView);
+
 
 
         // The parameter "position" is the index of the
         //  row ListView is requesting.
         //  We get back the food at the same index.
-        Module currModule = modules.get(position);
-        String module = currModule.getModuleCode();
+        String currYear = year.get(position);
+        // Set the TextView to show the food
 
-        moduleCode.setText(module);
-
-        if (currModule.getIsImage()){
-            moduleImage.setImageResource(R.drawable.prog);
-        }
-        else{
-            moduleImage.setImageResource(R.drawable.nonprog);
-        }
-
-
-
+        tvYear.setText(currYear);
         // Return the nicely done up View to the ListView
         return rowView;
     }
 
 }
-
