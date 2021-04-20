@@ -14,7 +14,7 @@ public class FirstActivity extends AppCompatActivity {
 
     ListView lv;
     ArrayList<String> al;
-    ArrayAdapter<String> aa;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,9 +27,9 @@ public class FirstActivity extends AppCompatActivity {
         al.add("Year 2");
         al.add("Year 3");
 
-
-        aa = new YearAdapter(this,R.layout.yearcell,al);
-        lv.setAdapter(aa);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+                android.R.layout.simple_list_item_1, android.R.id.text1, al);
+        lv.setAdapter(adapter);
 lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
